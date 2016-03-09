@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vulink - Access</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body style="background-color: #0099CC" ng-app="accessApp">
+<div ng-controller="accessFormController">
+    <nav style="background-color: #0086B3; border-color: transparent" ng-show="nsinput" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <form ng-submit="submitAccessForm()" class="navbar-form navbar-center">
+                <div class="form-group">
+                    <input type="text" name="namespace" placeholder="Namespace" class="input-md form-control" ng-model="access.ns">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" class="input-md form-control" ng-model="access.pw">
+                </div>
+                <div class="form-group">
+                        <button style="background-color: #FF571F" class="btn btn-primary btn-block btn-md" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div style="background-color: #0099CC" class="jumbotron">
+            <img style="margin-top: 20px;" class="col-sm-offset-3" src="logo.png">
+        </div>
+    </div>
+
+    <div class="container list-group" ng-cloak>
+        <div class="list-group-item col-sm-offset-4 col-sm-4" ng-show="nsinput" ng-repeat="link in links">
+            <p ng-bind="link.link"></p>
+        </div>
+    </div>
+
+    <div ng-hide="nsinput" class="container nsform">
+        <form ng-submit="submitAccessForm()" class="form-horizontal" role="form">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <input type="text" placeholder="Enter namespace name" class="form-control input-lg" id="namespace" name="ns" ng-model="access.ns">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <input type="password" class="form-control input-lg" id="password" placeholder="Enter password" ng-model="access.pw">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <button style="background-color: #FF571F" class="btn btn-primary btn-block btn-lg" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="info">
+            <div class="col-sm-6">
+                <p>Get information from the people all around you!</p>
+
+                <p>By giving friends your namespace name and password, they can easily read what you or your friends write!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+body {
+    font-size: 16px;
+}
+
+.info p {
+    font-size: 120%;
+    color: white;
+}
+
+.nsform {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 25%;
+}
+
+img {
+    max-width: 100%;
+}
