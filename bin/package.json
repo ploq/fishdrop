@@ -1,5 +1,5 @@
 {
-  "name": "fishdrop_command",
+  "name": "fishdrop",
   "version": "1.0.0",
   "description": "",
   "main": "fishdrop.js",
@@ -13,6 +13,7 @@
     "prompt": "^1.0.0"
   },
   "bin": {
-    "fishdrop": "fishdrop.js"
+    "fishdrop": "./fishdrop.js"
   }
 }
+
