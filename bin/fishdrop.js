@@ -11,7 +11,6 @@ function add_links(links, ns, pw, cb) {
     var options = {
         method: "POST",
         hostname: "fishdrop.xyz",
-        port: 3000,
         path: "/api/add/",
         headers: {
             'Content-Type': 'application/json',
