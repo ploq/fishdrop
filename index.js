@@ -14,12 +14,12 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-
+app.use(express.static("static"));
 
 app.use("/", index);
 app.use("/api", api);
 
-app.use(express.static("static"));
+
 
 var server = app.listen(3000, "localhost", function () {
     var host = server.address().address;
