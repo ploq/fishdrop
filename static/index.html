@@ -10,7 +10,7 @@
 
 </head>
 <body style="background-color: #0099CC" ng-app="accessApp">
-<div ng-controller="accessFormController">
+<div ng-controller="accessFormController" ng-cloak>
     <nav style="background-color: #0086B3; border-color: transparent" ng-show="nsinput" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <form ng-submit="submitAccessForm()" class="navbar-form navbar-center">
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="container list-group" ng-cloak>
+    <div class="container list-group">
         <div class="list-group-item col-sm-offset-4 col-sm-4" ng-show="nsinput" ng-repeat="link in links">
             <p ng-bind="link.link"></p>
         </div>
@@ -56,6 +56,7 @@
                     <div class="col-sm-offset-4 col-sm-4">
                         <button style="background-color: #FF571F" class="btn btn-primary btn-block btn-lg" type="submit">Submit</button>
                     </div>
+
                 </div>
             </div>
         </form>
@@ -67,7 +68,9 @@
                 <p>By giving friends your namespace name and password, they can easily read what you or your friends write!</p>
             </div>
         </div>
+
     </div>
+
 </div>
 
 

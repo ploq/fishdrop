@@ -1,6 +1,7 @@
 var accessApp = angular.module("accessApp", []);
 accessApp.controller("accessFormController", function($scope, $http) {
     $scope.access = {};
+    $scope.wrong_pw = false;
     $scope.submitAccessForm = function() {
         $http({
             method  : 'POST',
@@ -9,9 +10,6 @@ accessApp.controller("accessFormController", function($scope, $http) {
             headers : {'Content-Type': 'application/json'}
         }).success(function(data) {
             $scope.links = data;
-            $scope.nsinput = true;
-        }).error(function(data){
-            $scope.links = [{link: "Wrong password!"}];
             $scope.nsinput = true;
         });
     }

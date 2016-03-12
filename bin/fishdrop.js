@@ -10,13 +10,14 @@ function add_links(links, ns, pw, cb) {
     var data = {links: links, ns: ns, pw: pw};
     var options = {
         method: "POST",
-        hostname: "localhost",
+        hostname: "fishdrop.xyz",
         port: 3000,
         path: "/api/add/",
         headers: {
             'Content-Type': 'application/json',
             'Content-Length': JSON.stringify(data).length
         }
+
 
     };
 
@@ -26,7 +27,6 @@ function add_links(links, ns, pw, cb) {
     http_req.write(JSON.stringify(data));
     http_req.end();
 }
-
 
 program.version("0.0.1")
     .usage("<links ...>")
@@ -43,8 +43,12 @@ if (typeof program.password === "undefined") {
     prompt.get({properties: {password:{hidden:true}}}, function (err, result) {
         if (err) { return onErr(err); }
         add_links(program.args, program.namespace, result.password, function(status){
-            console.log("Status: " + status);
+            console.log("Links added to namespace", program.namespace) ;
         });
+    });
+} else {
+    add_links(program.args, program.namespace, program.password, function(status){
+        console.log("Links added to namespace", program.namespace);
     });
 
 }

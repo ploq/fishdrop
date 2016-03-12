@@ -6,12 +6,22 @@ var sjcl = require("sjcl");
 function test_pw(pw, namespace, cb) {
     db.ns_exists(namespace, function(exists){
         if (exists) {
-            db.gen_test(namespace, function(err, doc){
-                try {
-                    sjcl.decrypt(pw, doc[0].link);
-                    cb(true);
-                } catch (e) {
-                    cb(false);
+            db.ns_empty(namespace, pw, function(empty) {
+                if (empty) {
+                    db.ns_rmpw(namespace, function(err) {
+                        db.ns_add(namespace, pw);
+                        cb(true);
+                    });
+
+                } else {
+                    db.gen_test(namespace, function(err, doc){
+                        try {
+                            sjcl.decrypt(pw, doc[0].link);
+                            cb(true);
+                        } catch (e) {
+                            cb(false);
+                        }
+                    });
                 }
             });
         } else {
@@ -44,7 +54,7 @@ module.exports = (function(){
                         res.sendStatus(200);
                     });
                 } else {
-                    res.sendStatus(409);
+                    res.sendStatus(200);
                 }
             });
         });
@@ -65,7 +75,7 @@ module.exports = (function(){
                         res.send(ret_docs);
                     });
                 } else {
-                    res.sendStatus(409);
+                    res.send({});
                 }
             })
         });
