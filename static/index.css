@@ -16,6 +16,10 @@ body {
     height: 25%;
 }
 
+.links {
+    margin-top: 20px;
+}
+
 img {
     max-width: 100%;
 }
