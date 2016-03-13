@@ -12,5 +12,9 @@ accessApp.controller("accessFormController", function($scope, $http) {
             $scope.links = data;
             $scope.nsinput = true;
         });
+    };
+
+    $scope.addLinks = function() {
+        window.location.replace('http://fishdrop.xyz/add/' + $scope.access.ns + "/" + $scope.access.pw)
     }
 });
