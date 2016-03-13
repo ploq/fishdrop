@@ -3,6 +3,7 @@ accessApp.controller("accessFormController", function($scope, $http) {
     $scope.access = {};
     $scope.wrong_pw = false;
     $scope.submitAccessForm = function() {
+        console.log("AccessFrom");
         $http({
             method  : 'POST',
             url     : 'http://fishdrop.xyz/api/access',
